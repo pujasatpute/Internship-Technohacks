@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            width: 300px;
+            margin: auto;
+            margin-top: 100px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #0e0c0c;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .button {
+            width: 60px;
+            height: 60px;
+            margin: 2px;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="result" readonly>
+        <br>
+        <button class="button" onclick="clearResult()">C</button>
+        <button class="button" onclick="deleteLastChar()">&larr;</button>
+        <br>
+        <button class="button" onclick="appendChar('7')">7</button>
+        <button class="button" onclick="appendChar('8')">8</button>
+        <button class="button" onclick="appendChar('9')">9</button>
+        <button class="button" onclick="appendChar('/')">/</button>
+        <br>
+        <button class="button" onclick="appendChar('4')">4</button>
+        <button class="button" onclick="appendChar('5')">5</button>
+        <button class="button" onclick="appendChar('6')">6</button>
+        <button class="button" onclick="appendChar('*')">*</button>
+        <br>
+        <button class="button" onclick="appendChar('1')">1</button>
+        <button class="button" onclick="appendChar('2')">2</button>
+        <button class="button" onclick="appendChar('3')">3</button>
+        <button class="button" onclick="appendChar('-')">-</button>
+        <br>
+        <button class="button" onclick="appendChar('0')">0</button>
+        <button class="button" onclick="appendChar('.')">.</button>
+        <button class="button" onclick="calculate()">=</button>
+        <button class="button" onclick="appendChar('+')">+</button>
+    </div>
+
+    <script>
+        function appendChar(char) {
+            document.getElementById("result").value += char;
+        }
+
+        function deleteLastChar() {
+            var result = document.getElementById("result").value;
+            document.getElementById("result").value = result.slice(0, -1);
+        }
+
+        function clearResult() {
+            document.getElementById("result").value = "";
+        }
+
+        function calculate() {
+            var result = document.getElementById("result").value;
+            var calculatedResult = eval(result);
+            document.getElementById("result").value = calculatedResult;
+        }
+    </script>
+</body>
+</html>
