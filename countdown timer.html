@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Countdown Timer</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        
+        body {
+            background-image: url('C:/Users/hp/OneDrive/Pictures/moon1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .timer {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            color: #ffffff; 
+        }
+        
+        .text {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ffffff; 
+        }
+    </style>
+</head>
+<body>
+    <div class="text">Hi Connections! </div>
+    <div  class="text"> This is a countdown timer program</div>
+    <div class="timer" id="countdown"></div>
+
+    <script>
+       
+        var duration = 3600; 
+
+        var countdown = setInterval(function() {
+          
+            var hours = Math.floor(duration / 3600);
+            var minutes = Math.floor((duration % 3600) / 60);
+            var seconds = duration % 60;
+
+            
+            document.getElementById("countdown").innerHTML = hours + "h " + minutes + "m " + seconds + "s";
+            duration--;
+
+            if (duration < 0) {
+                clearInterval(countdown);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+                document.querySelector(".text").innerHTML = ""; 
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
